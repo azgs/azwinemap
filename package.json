@@ -1,0 +1,29 @@
+{
+  "name": "azwinemap",
+  "version": "0.0.0",
+  "description": "Map of AZ Vineyards, Wineries and Tasting Rooms.",
+  "main": "server.js",
+  "dependencies": {
+    "express": "^4.4.1",
+    "underscore": "^1.6.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/azgs/azwinemap.git"
+  },
+  "owner": "Arizona Geological Survey",
+  "authors": [
+    "Jessica Good",
+    "Laura Bookman"
+  ],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/azgs/az-agriculture/issues"
+  },
+  "homepage": "https://github.com/azgs/az-agriculture"
+}
