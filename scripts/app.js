@@ -78,6 +78,10 @@ d3.json(app.serviceUrl, function (err, res) {
       })
     }).render();
 
+    app.noContentView = new app.views.NoContentView({
+      el: $('#get-content').first()
+    }).render();
+
     app.mapContentView = new app.views.MapContentView({
       el: $('#map .leaflet-popup-pane'),
       model: new app.models.MapContentView({
