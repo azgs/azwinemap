@@ -119,6 +119,20 @@ h5.subtitle {
   box-shadow: none;
 }
 
+table.hours, td.hours {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  padding: 5px;
+  text-align: center;
+}
+
+th.hours {
+  background-color: #428bca;
+  color: white;
+  padding: 5px;
+  text-align: center;
+}
+
+
 @media(max-width:767px){
   #content-tab {
     position: absolute;
@@ -391,18 +405,5 @@ h5.subtitle {
   
   .collapse.in{
     display: block !important;
-  }
-  
-    table.hours, td.hours {
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    padding: 5px;
-    text-align: center;
-  }
-
-  th.hours {
-    background-color: #428bca;
-    color: white;
-    padding: 5px;
-    text-align: center;
   }
 }
