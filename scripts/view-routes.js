@@ -125,8 +125,8 @@ app.views.RouteView = Backbone.View.extend({
   getLocation:  function (location) {
     var farmsData = this.model.get('farmsData').features;
     _.each(farmsData, function (farm) {
-      if (farm.properties.source === location) {
-        location = farm.properties.lat + ", " + farm.properties.lon;
+      if (farm.properties.name === location) {
+        location = farm.geometry.coordinates[1] + ", " + farm.geometry.coordinates[0];
       }
     })
     return location;
