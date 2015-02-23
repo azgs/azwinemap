@@ -67,7 +67,7 @@ app.views.MapContentView = Backbone.View.extend({
         $('#get-directions').siblings().removeClass('active');
         $('#get-directions').addClass('active');
 
-        farm = this.attributes.properties.source;
+        farm = this.attributes.properties.name;
         $('#geo-destination').val(farm);
       }
     });

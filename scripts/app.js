@@ -122,7 +122,7 @@ d3.json(app.serviceUrl, function (err, res) {
 
     var farmsTypeahead = _.map(res.features, function (f) {
       return {
-        name: f.properties.source,
+        name: f.properties.name,
         source: 'Farms',
         lat: f.geometry.coordinates[1],
         lng: f.geometry.coordinates[0],
