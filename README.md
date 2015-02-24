@@ -3,22 +3,7 @@
 
 ##Development Setup
 
-### Prerequisites
-
-> [node.js](http://nodejs.org/)
-
-### Installation
-
-    > npm install
-
-### Running for Development
-
-    > node server.js
-
-Go to http://localhost:3000/
-
-### Production Setup
-- Change the basemap link.
+Open index.html
 
 ### Data
 
