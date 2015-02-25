@@ -2,7 +2,7 @@
 var root = this;
 root.app == null ? app = root.app = {} : app = root.app;
 
-app.serviceUrl = "http://159.87.39.11/api/rest/vineyards";
+app.serviceUrl = "http://winedb.arizonaexperience.org/api/rest/vineyards";
 
 app.intialExtent = L.latLngBounds(
   [37.094259, -115.115688],
