@@ -34,55 +34,46 @@ app.views.FarmsView = Backbone.View.extend({
   addDataToLayer: function (template) {
     var model = this.model;
     var layer = model.get("layer");
-    var crops = model.get('crops');
-    var seasons = model.get('seasons');
+    var wines = model.get("wines");
+    //var crops = model.get('crops');
+    //var seasons = model.get('seasons');
     if (model.get("isExtent") && layer) {
       app.map.fitBounds(layer);
       model.set("isExtent", false);
     }
     $(this.el).append(template({
       model: model,
-      crops: crops,
-      seasons: seasons,
+      wines: wines,
+      //crops: crops,
+      //seasons: seasons,
     }))
   },
   filterJSON: function (layer, watcher) {
-    var seasons = this.model.get('seasons');
     layer.setFilter(function (feature) {
-      var crops = feature.properties.crop;
-      for (i = 0; i < crops.length; i++) {
-        if (crops[i]) {
-          var crop = crops[i]["type"];
-          var normalizeCrop = crop.replace(/\s/g, '').toLowerCase();
-          if (watcher.indexOf(normalizeCrop) !== -1) {
+      var wines = feature.properties.type;
+      for (key in wines) {
+        if (wines[key] == true)
+          if (watcher.indexOf(key) !== -1)
             return feature;
-          }
-          var seasons = crops[i]['seasons'];
-          for (y = 0; y < seasons.length; y++) {
-            var normalizeSeason = seasons[y].replace(/\s/g, '').toLowerCase();
-            if (watcher.indexOf(normalizeSeason) !== -1) {
-              return feature;
-            }
-          }
-        }
       }
     })
   },
   toggleLayers: function (e) {
     var self = this;
     var layer = this.model.get('layer');
-    var crops = this.model.get('crops');
+    var wines = this.model.get('wines')
+ //   var crops = this.model.get('crops');
     var filter = e.currentTarget.id;
     var target = $(e.currentTarget);
-    var cropsList = []
+    var winesList = []
 
-    for (var key in crops) {
-      cropsList.push(crops[key]['id']);
+    for (key in wines) {
+      winesList.push(wines[key]['id']);
     }
 
     var allID = $('#all');
     var cropsID = $("#toggle-crops button");
-    var seasonsID = $('#toggle-seasons button');
+    //var seasonsID = $('#toggle-seasons button');
 
     if (filter === "all") {
       self.active = [];
@@ -90,9 +81,9 @@ app.views.FarmsView = Backbone.View.extend({
         self.filterJSON(layer, []);
         target.removeClass("active");
       } else {
-        self.filterJSON(layer, cropsList);
+        self.filterJSON(layer, winesList);
         cropsID.removeClass("active");
-        seasonsID.removeClass('active');
+      //  seasonsID.removeClass('active');
         target.addClass("active");
       }
     } else {

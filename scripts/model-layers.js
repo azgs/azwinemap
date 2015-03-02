@@ -41,7 +41,7 @@ app.models.GeoJSONLayer = app.models.LayerModel.extend({
   toggleSupport: function (data) {
     var self = this;
     var sanityCrop = [];
-    self.set('crops', []);
+    self.set('wines', []);
     self.set('seasons', [
       {"id": "winter", "display": "Winter", 
         "months": ["december", "january", "february"]},
@@ -53,17 +53,13 @@ app.models.GeoJSONLayer = app.models.LayerModel.extend({
         "months": ["september", "november", "december"]},
     ]);
     _.each(data.features, function (layer) {
-      var crops = layer.properties.crop;
-      _.each(crops, function (crop) {
-        if (crop) {
-          if (_.indexOf(sanityCrop, crop.type) < 0) {
-            sanityCrop.push(crop.type);
-            var normalize = crop.type.replace(/\s/g, '').toLowerCase();
-            var item = {"id": normalize, "display": crop.type};
-            self.get('crops').push(item);
-          }
+      var wines = layer.properties.type;
+      for (key in wines) {
+        if (wines[key] == true) {
+          if (_.findWhere(self.get('wines'), {id: key}) === undefined)
+            self.get('wines').push({"id": key, "display": key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ')});
         }
-      })
+      }
     })
   },
 });
