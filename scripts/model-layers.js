@@ -42,22 +42,13 @@ app.models.GeoJSONLayer = app.models.LayerModel.extend({
     var self = this;
     var sanityCrop = [];
     self.set('wines', []);
-    self.set('seasons', [
-      {"id": "winter", "display": "Winter", 
-        "months": ["december", "january", "february"]},
-      {"id": "spring", "display": "Spring",
-        "months": ["march", "april", "may"]},
-      {"id": "summer", "display": "Summer",
-        "months": ["june", "july", "august"]},
-      {"id": "fall", "display": "Fall",
-        "months": ["september", "november", "december"]},
-    ]);
+    
     _.each(data.features, function (layer) {
       var wines = layer.properties.type;
       for (key in wines) {
         if (wines[key] == true) {
           if (_.findWhere(self.get('wines'), {id: key}) === undefined)
-            self.get('wines').push({"id": key, "display": key.charAt(0).toUpperCase() + key.slice(1).replace(/_/g, ' ')});
+            self.get('wines').push({"id": key, "display": key.replace(/_/g, ' ').replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})});
         }
       }
     })

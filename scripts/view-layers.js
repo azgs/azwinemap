@@ -35,8 +35,6 @@ app.views.FarmsView = Backbone.View.extend({
     var model = this.model;
     var layer = model.get("layer");
     var wines = model.get("wines");
-    //var crops = model.get('crops');
-    //var seasons = model.get('seasons');
     if (model.get("isExtent") && layer) {
       app.map.fitBounds(layer);
       model.set("isExtent", false);
@@ -44,8 +42,6 @@ app.views.FarmsView = Backbone.View.extend({
     $(this.el).append(template({
       model: model,
       wines: wines,
-      //crops: crops,
-      //seasons: seasons,
     }))
   },
   filterJSON: function (layer, watcher) {
@@ -62,7 +58,6 @@ app.views.FarmsView = Backbone.View.extend({
     var self = this;
     var layer = this.model.get('layer');
     var wines = this.model.get('wines')
- //   var crops = this.model.get('crops');
     var filter = e.currentTarget.id;
     var target = $(e.currentTarget);
     var winesList = []
@@ -73,7 +68,6 @@ app.views.FarmsView = Backbone.View.extend({
 
     var allID = $('#all');
     var cropsID = $("#toggle-crops button");
-    //var seasonsID = $('#toggle-seasons button');
 
     if (filter === "all") {
       self.active = [];
@@ -83,7 +77,6 @@ app.views.FarmsView = Backbone.View.extend({
       } else {
         self.filterJSON(layer, winesList);
         cropsID.removeClass("active");
-      //  seasonsID.removeClass('active');
         target.addClass("active");
       }
     } else {
