@@ -66,7 +66,7 @@ d3.json(app.serviceUrl, function (err, res) {
               , svg
               , tag;
 
-            svg = 'images/marker.svg';
+            svg = 'images/black-bottle-composite-icon.svg';
             tag = 'marker';
             icon = L.divIcon({
               className: tag,
