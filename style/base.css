@@ -110,6 +110,21 @@ h5.subtitle {
 	text-align: left;
 }
 
+#item  {
+  max-height: 350px; 
+}
+
+#itemactive {
+  max-height: 350px;
+}
+
+.separator {
+  word-spacing: 1.1em;
+  background-repeat: no-repeat;
+  background-position: 50% 60%;
+  background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUAAAAFCAYAAACNbyblAAAAOElEQVQI113M0Q3AIBRC0aM76P7jmHSmSj/6mibyc4EQkEEWuYtDmU1SXO1d6H7tjgupIl8+P+cD22cff9U1wbsAAAAASUVORK5CYII=);
+}
+
 #get-directions {
   padding-top: 10px;
 }
@@ -242,6 +257,7 @@ th.hours {
     background-color: #47a447;
     border-color: #398439;
     color: #fff;
+    padding: 5px;
   }
 	
 	#get-directions {
@@ -361,6 +377,7 @@ th.hours {
     background-color: #47a447;
     border-color: #398439;
     color: #fff;
+    padding: 5px;
   }
   
   .navbar-header {

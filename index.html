@@ -101,7 +101,7 @@
                 <% var img = data.properties.image %>
                 <% if (img !== "") { %>
                   <div class="item active">
-                    <img src=<%= "http://winedb.arizonaexperience.org/media/" + img %> >
+                    <img src=<%= "http://winedb.arizonaexperience.org/media/" + img %> id="itemactive" >
                   </div>
                 <% } %>
               </div>
@@ -132,31 +132,40 @@
         
         <div class="farms-content">
            <% if (data.properties.type.vineyard == true) { %>
-              <h5><strong>Vineyard •</strong></tr>
+              <h5><strong> Vineyard </strong></tr>
+                <% if (data.properties.type.tasting_room == true || data.properties.type.winery == true) { %>
+                <tr><strong> • </strong></tr>
+                <% } %>
           <% } %>
           <% if (data.properties.type.tasting_room == true) { %>
-            <tr><strong>Tasting Room •</strong></tr>
+            <tr><strong> Tasting Room </strong></tr>
+               <% if ( data.properties.type.winery == true) { %>
+                <tr><strong> • </strong></tr>
+                <% } %>
           <% } %>
           <% if (data.properties.type.winery == true) { %>
-           <tr><strong> Winery</strong></tr>
+           <tr><strong> Winery </strong></tr>
           <% } %>
           <br>
           <br>
           <%= data.properties.description %>
           <br>
-          <h5><strong>Products:</strong></h5>
-            <ul>
-              <% _.each(data.properties.products, function (products) { %>
-                <li><%= products["product"] %>: <%= products["description"] %></li>
-              <% }); %>
-            </ul>
-          <h5><strong>Services:</strong></h5>
-            <ul>
-              <% _.each(data.properties.services, function (services) { %>
-                <li><%= services["service"] %>: <%= services["description"] %> </li>
-              <% }); %>
-            </ul>
-            
+          <% if (data.properties.products.length != 0) { %> 
+           <h5><strong>Products:</strong></h5>
+             <ul>
+               <%  _.each(data.properties.products, function (products) { %>
+                 <li><%= products["product"] %>: <%= products["description"] %></li>
+               <% }); %>
+             </ul>
+          <% } %>     
+          <% if (data.properties.services.length != 0) { %>  
+            <h5><strong>Services:</strong></h5>
+              <ul>
+                <% _.each(data.properties.services, function (services) { %>
+                  <li><%= services["service"] %>: <%= services["description"] %> </li>
+                  <% }); %>
+              </ul>
+          <% } %>  
           <tr><strong>Hours of Operation:</strong></tr>
            <tr> <table class="hours"></tr>
               <tr>
