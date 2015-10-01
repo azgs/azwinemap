@@ -42,8 +42,30 @@ app.models.GeoJSONLayer = app.models.LayerModel.extend({
     var self = this;
     var sanityCrop = [];
     self.set('wines', []);
-    
+
     _.each(data.features, function (layer) {
+      // Convert military time to am/pm
+      _.map(layer.properties.hours, function(day) {
+        var hour = day.open.match(/\d\d?:\d\d/g);
+        if (hour) {
+          var hours24 = Number(day.open.match(/^\d\d?/g));
+          var hours = ((hours24 + 11) % 12) + 1;
+          var amPm = hours24 > 11 ? 'pm' : 'am';
+          var minutes = day.open.match(/\d\d$/g);
+          var newHour = hours + ':' + minutes + " " + amPm;
+          day.open = newHour;
+        }
+        hour = day.close.match(/\d\d?:\d\d/g);
+        if (hour) {
+          var hours24 = Number(day.close.match(/^\d\d?/g));
+          var hours = ((hours24 + 11) % 12) + 1;
+          var amPm = hours24 > 11 ? 'pm' : 'am';
+          var minutes = day.close.match(/\d\d$/g);
+          var newHour = hours + ':' + minutes + " " + amPm;
+          day.close = newHour;
+        }
+        return [day.open, day.close, day.call];
+      });
       var wines = layer.properties.type;
       for (key in wines) {
         if (wines[key] == true) {

@@ -14,17 +14,17 @@
 		<link rel="stylesheet" href="vendor/font-awesome-4.1.0/css/font-awesome.min.css">
 		<link rel="stylesheet" href="vendor/bootstrap-3.1.1.css">
     <link rel="stylesheet" href="style/base.css" />
-  	
+
 		<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
 		<link rel="apple-touch-icon" href="images/favicon-152.png">
     <link rel="shortcut icon" sizes="196x196" href="images/favicon-196.png">
-  
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
         <script src="vendor/html5shiv.js"></script>
         <script src="vendor/respond.min.js"></script>
     <![endif]-->
-	
+
 	</head>
   <body>
   	<div id="map"></div>
@@ -105,8 +105,9 @@
                   </div>
                 <% } %>
               </div>
+            </div>
           <% } %>
-      
+
           <table class="table">
             <tbody>
             <tr>
@@ -128,46 +129,45 @@
             </tbody>
           </table>
         </div>
-        
-        
+
         <div class="farms-content">
            <% if (data.properties.type.vineyard == true) { %>
-              <h5><strong> Vineyard </strong></tr>
+              <strong> Vineyard </strong>
                 <% if (data.properties.type.tasting_room == true || data.properties.type.winery == true) { %>
-                <tr><strong> • </strong></tr>
+                <strong> • </strong>
                 <% } %>
           <% } %>
           <% if (data.properties.type.tasting_room == true) { %>
-            <tr><strong> Tasting Room </strong></tr>
+            <strong> Tasting Room </strong>
                <% if ( data.properties.type.winery == true) { %>
-                <tr><strong> • </strong></tr>
+                <strong> • </strong>
                 <% } %>
           <% } %>
           <% if (data.properties.type.winery == true) { %>
-           <tr><strong> Winery </strong></tr>
+           <strong> Winery </strong>
           <% } %>
           <br>
           <br>
           <%= data.properties.description %>
           <br>
-          <% if (data.properties.products.length != 0) { %> 
+          <% if (data.properties.products.length != 0) { %>
            <h5><strong>Products:</strong></h5>
              <ul>
                <%  _.each(data.properties.products, function (products) { %>
                  <li><%= products["product"] %>: <%= products["description"] %></li>
                <% }); %>
              </ul>
-          <% } %>     
-          <% if (data.properties.services.length != 0) { %>  
+          <% } %>
+          <% if (data.properties.services.length != 0) { %>
             <h5><strong>Services:</strong></h5>
               <ul>
                 <% _.each(data.properties.services, function (services) { %>
                   <li><%= services["service"] %>: <%= services["description"] %> </li>
                   <% }); %>
               </ul>
-          <% } %>  
-          <tr><strong>Hours of Operation:</strong></tr>
-           <tr> <table class="hours"></tr>
+          <% } %>
+          <strong>Hours of Operation:</strong>
+           <table class="hours">
               <tr>
                 <th class="hours">Day</th>
                 <th class="hours">Open</th>
@@ -176,48 +176,47 @@
               </tr>
               <tr>
                 <td class="hours">Monday</td>
-                <td class="hours"><%= data.properties.hours.monday.open.substr(0,5) %></td>
-                <td class="hours"><%= data.properties.hours.monday.close.substr(0,5) %></td>
+                <td class="hours"><%= data.properties.hours.monday.open %></td>
+                <td class="hours"><%= data.properties.hours.monday.close %></td>
                 <td class="hours"><% if (data.properties.hours.monday.call == true) { %> Call <% } %></td>
               </tr>
               <tr>
                 <td class="hours">Tuesday</td>
-                <td class="hours"><%= data.properties.hours.tuesday.open.substr(0,5) %></td>
-                <td class="hours"><%= data.properties.hours.tuesday.close.substr(0,5) %></td>
+                <td class="hours"><%= data.properties.hours.tuesday.open %></td>
+                <td class="hours"><%= data.properties.hours.tuesday.close %></td>
                 <td class="hours"><% if (data.properties.hours.tuesday.call == true) { %> Call <% } %></td> </td>
               </tr>
               <tr>
                 <td class="hours">Wednesday</td>
-                <td class="hours"><%= data.properties.hours.wednesday.open.substr(0,5) %></td>
-                <td class="hours"><%= data.properties.hours.wednesday.close.substr(0,5) %></td>
+                <td class="hours"><%= data.properties.hours.wednesday.open %></td>
+                <td class="hours"><%= data.properties.hours.wednesday.close %></td>
                 <td class="hours"><% if (data.properties.hours.wednesday.call == true) { %> Call <% } %></td>
               </tr>
               <tr>
                 <td class="hours">Thursday</td>
-                <td class="hours"><%= data.properties.hours.thursday.open.substr(0,5) %></td>
-                <td class="hours"><%= data.properties.hours.thursday.close.substr(0,5) %></td>
+                <td class="hours"><%= data.properties.hours.thursday.open %></td>
+                <td class="hours"><%= data.properties.hours.thursday.close %></td>
                 <td class="hours"><% if (data.properties.hours.thursday.call == true) { %> Call <% } %></td>
               </tr>
               <tr>
                 <td class="hours">Friday</td>
-                <td class="hours"><%= data.properties.hours.friday.open.substr(0,5) %></td>
-                <td class="hours"><%= data.properties.hours.friday.close.substr(0,5) %></td>
+                <td class="hours"><%= data.properties.hours.friday.open %></td>
+                <td class="hours"><%= data.properties.hours.friday.close %></td>
                 <td class="hours"><% if (data.properties.hours.friday.call == true) { %> Call <% } %></td>
               </tr>
               <tr>
                 <td class="hours">Saturday</td>
-                <td class="hours"><%= data.properties.hours.saturday.open.substr(0,5) %></td>
-                <td class="hours"><%= data.properties.hours.saturday.close.substr(0,5) %></td>
+                <td class="hours"><%= data.properties.hours.saturday.open %></td>
+                <td class="hours"><%= data.properties.hours.saturday.close %></td>
                 <td class="hours"><% if (data.properties.hours.saturday.call == true) { %> Call <% } %></td>
               </tr>
               <tr>
                 <td class="hours">Sunday</td>
-                <td class="hours"><%= data.properties.hours.sunday.open.substr(0,5) %></td>
-                <td class="hours"><%= data.properties.hours.sunday.close.substr(0,5) %></td>
+                <td class="hours"><%= data.properties.hours.sunday.open %></td>
+                <td class="hours"><%= data.properties.hours.sunday.close %></td>
                 <td class="hours"><% if (data.properties.hours.sunday.call == true) { %> Call <% } %></td>
               </tr>
           </table>
-            </ul>
           <h5><strong>Owner: </strong><%= data.properties.owner %></h5>
           <h5><strong>Established: </strong><%= data.properties.established %></h5>
         </div>
@@ -289,9 +288,9 @@
 			<div class="panel panel-default">
 				<% if (found == true) { %>
 					<div class="totals">
-							Drive <%= distance %>, <%= time %><br>	
+							Drive <%= distance %>, <%= time %><br>
 					</div>
-					<img src="images/start.png" height="16" width="16"><strong>&nbsp;<%= $("#geo-start").val() %></strong> <br>			
+					<img src="images/start.png" height="16" width="16"><strong>&nbsp;<%= $("#geo-start").val() %></strong> <br>
 					<div class="list-group"></div>
 					<img src="images/stop.png"><strong>&nbsp;<%= $("#geo-destination").val() %></strong>
 				<% } %>
