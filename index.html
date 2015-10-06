@@ -149,56 +149,45 @@
         <% } %>
         <br>
         <br>
-        <table class="hours">
-          <tr>
-            <th class="hours">Day</th>
-            <th class="hours">Open</th>
-            <th class="hours">Close</th>
-            <th class="hours">Call / by <br> appointment</th>
-          </tr>
-          <tr>
-            <td class="hours">Monday</td>
-            <td class="hours"><%= data.properties.hours.monday.open %></td>
-            <td class="hours"><%= data.properties.hours.monday.close %></td>
-            <td class="hours"><% if (data.properties.hours.monday.call == true) { %> Call <% } %></td>
-          </tr>
-          <tr>
-            <td class="hours">Tuesday</td>
-            <td class="hours"><%= data.properties.hours.tuesday.open %></td>
-            <td class="hours"><%= data.properties.hours.tuesday.close %></td>
-            <td class="hours"><% if (data.properties.hours.tuesday.call == true) { %> Call <% } %></td> </td>
-          </tr>
-          <tr>
-            <td class="hours">Wednesday</td>
-            <td class="hours"><%= data.properties.hours.wednesday.open %></td>
-            <td class="hours"><%= data.properties.hours.wednesday.close %></td>
-            <td class="hours"><% if (data.properties.hours.wednesday.call == true) { %> Call <% } %></td>
-          </tr>
-          <tr>
-            <td class="hours">Thursday</td>
-            <td class="hours"><%= data.properties.hours.thursday.open %></td>
-            <td class="hours"><%= data.properties.hours.thursday.close %></td>
-            <td class="hours"><% if (data.properties.hours.thursday.call == true) { %> Call <% } %></td>
-          </tr>
-          <tr>
-            <td class="hours">Friday</td>
-            <td class="hours"><%= data.properties.hours.friday.open %></td>
-            <td class="hours"><%= data.properties.hours.friday.close %></td>
-            <td class="hours"><% if (data.properties.hours.friday.call == true) { %> Call <% } %></td>
-          </tr>
-          <tr>
-            <td class="hours">Saturday</td>
-            <td class="hours"><%= data.properties.hours.saturday.open %></td>
-            <td class="hours"><%= data.properties.hours.saturday.close %></td>
-            <td class="hours"><% if (data.properties.hours.saturday.call == true) { %> Call <% } %></td>
-          </tr>
-          <tr>
-            <td class="hours">Sunday</td>
-            <td class="hours"><%= data.properties.hours.sunday.open %></td>
-            <td class="hours"><%= data.properties.hours.sunday.close %></td>
-            <td class="hours"><% if (data.properties.hours.sunday.call == true) { %> Call <% } %></td>
-          </tr>
-        </table>
+        <strong> Hours of Operation: </strong>
+        <% if (data.properties.hours.monday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.monday.close.match(/^\d\d?:\d\d/g)) { %>
+          <div class="hours">Monday: 
+            <%= data.properties.hours.monday.open %> - <%= data.properties.hours.monday.close %> 
+          </div>
+        <% } %>
+        <% if (data.properties.hours.tuesday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.tuesday.close.match(/^\d\d?:\d\d/g)) { %>
+          <div class="hours">Tuesday: 
+            <%= data.properties.hours.tuesday.open %> - <%= data.properties.hours.tuesday.close %> 
+          </div>
+        <% } %>
+        <% if (data.properties.hours.wednesday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.wednesday.close.match(/^\d\d?:\d\d/g)) { %>
+          <div class="hours">Wednesday: 
+            <%= data.properties.hours.wednesday.open %> - <%= data.properties.hours.wednesday.close %> 
+          </div>
+        <% } %>
+        <% if (data.properties.hours.thursday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.thursday.close.match(/^\d\d?:\d\d/g)) { %>
+          <div class="hours">Thursday: 
+            <%= data.properties.hours.thursday.open %> - <%= data.properties.hours.thursday.close %> 
+          </div>
+        <% } %>
+        <% if (data.properties.hours.friday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.friday.close.match(/^\d\d?:\d\d/g)) { %>
+          <div class="hours">Friday: 
+            <%= data.properties.hours.friday.open %> - <%= data.properties.hours.friday.close %> 
+          </div>
+        <% } %>
+        <% if (data.properties.hours.saturday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.saturday.close.match(/^\d\d?:\d\d/g)) { %>
+          <div class="hours">Saturday: 
+            <%= data.properties.hours.saturday.open %> - <%= data.properties.hours.saturday.close %> 
+          </div>
+        <% } %>
+        <% if (data.properties.hours.sunday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.sunday.close.match(/^\d\d?:\d\d/g)) { %>
+          <div class="hours">Sunday: 
+            <%= data.properties.hours.sunday.open %> - <%= data.properties.hours.sunday.close %> 
+          </div>
+        <% } %>
+        <br>
+        Please call for appointment 
+        <br>
         <br>
         <%= data.properties.description %>
         <br>
