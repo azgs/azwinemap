@@ -6,12 +6,13 @@ app.views == null ? app.views = app.views = {} : app.views = app.views;
 // Render the basemap
 app.views.BaseMapView = Backbone.View.extend({
   initialize: function (options) {
-  	active = this.findActiveModel();
-  	app.map.addLayer(active.get('layer'));
+    active = this.findActiveModel();
+    app.map.addLayer(active.get('layer'));
   },
-  render: function () {},
+  render: function () {
+  },
   findActiveModel: function () {
-  	if (this.model.get('active')) return this.model;
+    if (this.model.get('active')) return this.model;
   }
 });
 
@@ -26,7 +27,8 @@ app.views.FarmsView = Backbone.View.extend({
   },
   events: {
     "click a": "switchLayers",
-    "click button": "toggleLayers"
+    "click button": "toggleLayers",
+    "click span": "getFeatureDetail"
   },
   addToMap: function () {
     this.model.get("layer").addTo(app.map);
@@ -131,7 +133,7 @@ app.views.FarmsView = Backbone.View.extend({
       if (target.hasClass("active")) {
         var index = self.active.indexOf(filter);
         if (index !== -1) {
-          self.active.splice(index, 1);        
+          self.active.splice(index, 1);
         }
         self.filterJSON(layer, self.active);
         target.removeClass("active");
@@ -145,17 +147,16 @@ app.views.FarmsView = Backbone.View.extend({
         }
         self.filterJSON(layer, self.active);
       }
-      
-app.mapContentView = new app.views.MapContentView({
-  el: $('#map-content').first(),
-}).render();
 
+      app.mapContentView = new app.views.MapContentView({
+        el: $('#map-content').first()
+      }).render();
     }
   },
   switchLayers: function (e) {
     var toggle = $(e.currentTarget).attr("id"),
-        model = this.collection.get(toggle);
-    
+      model = this.collection.get(toggle);
+
     if (model.get("active")) {
       model.set("active", false);
       app.map.removeLayer(model.get("layer"));
@@ -163,5 +164,8 @@ app.mapContentView = new app.views.MapContentView({
       model.set("active", true);
       app.map.addLayer(model.get("layer"));
     }
+  },
+  getFeatureDetail: function (e) {
+    app.mapContentView.configureContent(e);
   }
 });

@@ -426,4 +426,12 @@ th.hours {
   .collapse.in{
     display: block !important;
   }
+
+  .locations-list-item {
+    color: #428bca;
+  }
+
+  .locations-list-item:hover {
+    text-decoration: underline;
+  }
 }
