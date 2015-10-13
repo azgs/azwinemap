@@ -64,10 +64,34 @@ d3.json(app.serviceUrl, function (err, res) {
           pointToLayer: function (f, ll) {
             var icon
               , svg
-              , tag;
+              , tag
+              , vineyardType
+              , wineryType
+              , tasting_roomType;
 
-            svg = 'images/black-bottle-composite-icon.svg';
-            tag = 'marker';
+            
+            vineyardType = f.properties.type.vineyard;
+            wineryType = f.properties.type.winery;
+            tasting_roomType = f.properties.type.tasting_room;
+         
+             if ((vineyardType && wineryType) || (vineyardType && tasting_roomType) || (tasting_roomType && wineryType)) {
+              svg = 'images/color-bottle-composite-icon.svg';
+              tag = 'allmarker';
+             }
+            else {
+            if (vineyardType == true) {
+              svg = 'images/color-grape-vineyard-icon.svg';
+              tag = 'vineyardmarker';
+            }
+            if (wineryType == true) {
+              svg = 'images/color-cask-winery-icon.svg';
+              tag = 'winerymarker';
+            }
+            if (tasting_roomType == true) {
+              svg = 'images/color-glass-tasting-room-icon.svg';
+              tag = 'tasting_roommarker';
+            }
+              }
             icon = L.divIcon({
               className: tag,
               html: '<img src=' + svg + '>'
