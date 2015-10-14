@@ -187,9 +187,14 @@
             <%= data.properties.hours.sunday.open %> - <%= data.properties.hours.sunday.close %> 
           </div>
         <% } %>
+        <% if (data.properties.hours.monday.call == true || data.properties.hours.tuesday.call == true ||
+        data.properties.hours.wednesday.call == true || data.properties.hours.thursday.call == true ||
+        data.properties.hours.friday.call == true || data.properties.hours.saturday.call == true ||
+        data.properties.hours.sunday.call == true) { %>
         <br>
-        Please call for appointment 
+        Please call for appointment
         <br>
+        <% } %>
         <br>
         <%= data.properties.description %>
         <br>
