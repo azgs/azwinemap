@@ -150,8 +150,21 @@
           <strong> Winery </strong>
         <% } %>
         <br>
+        <% if (
+        (data.properties.hours.monday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.monday.close.match(/^\d\d?:\d\d/g)) ||
+        (data.properties.hours.tuesday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.tuesday.close.match(/^\d\d?:\d\d/g)) ||
+        (data.properties.hours.wednesday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.wednesday.close.match(/^\d\d?:\d\d/g)) ||
+        (data.properties.hours.thursday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.thursday.close.match(/^\d\d?:\d\d/g)) ||
+        (data.properties.hours.friday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.friday.close.match(/^\d\d?:\d\d/g)) ||
+        (data.properties.hours.saturday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.saturday.close.match(/^\d\d?:\d\d/g)) ||
+        (data.properties.hours.sunday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.sunday.close.match(/^\d\d?:\d\d/g)) ||
+        data.properties.hours.monday.call == true || data.properties.hours.tuesday.call == true ||
+        data.properties.hours.wednesday.call == true || data.properties.hours.thursday.call == true ||
+        data.properties.hours.friday.call == true || data.properties.hours.saturday.call == true ||
+        data.properties.hours.sunday.call == true) { %>
         <br>
         <strong> Hours of Operation: </strong>
+        <% } %>
         <% if (data.properties.hours.monday.open.match(/^\d\d?:\d\d/g) && data.properties.hours.monday.close.match(/^\d\d?:\d\d/g)) { %>
           <div class="hours">Monday: 
             <%= data.properties.hours.monday.open %> - <%= data.properties.hours.monday.close %> 
