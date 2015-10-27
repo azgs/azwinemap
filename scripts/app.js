@@ -71,7 +71,7 @@ var getCurrentMarkers = function () {
       return "<li><span class=\"locations-list-item\" id=\"" + feature.uid + "\"><b>" + feature.name + "</b>, " + feature.address.county + "</span></li>";
     });
     $('#locations-list').html("<ul>" + inBoundsDisplay.join("") + "</ul>");
-    $('#locations-list').css({'overflow-y': 'scroll', 'max-height': $('#content-tab').height() - 390});
+    $('#locations-list').css({'overflow-y': 'scroll', 'max-height': $('#content-tab').height() - 525});
   }
 };
 
