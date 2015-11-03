@@ -3,7 +3,7 @@ body {
   margin: 0;
   height: 100%;
   width: 100%;
-	overflow: hidden;
+	overflow: auto;
 }
 
 .leaflet-marker-pane img {
@@ -38,6 +38,13 @@ body {
 .collapse {
   display: none !important;
 }
+
+/*background color for wineries list*/ 
+  .background-color{
+  	background-color: #ECF1EF;
+	padding: 2px 5px 0px 5px;
+	margin: 5px 0 0 0
+  }
 
 h4 {
 	text-align: center;
@@ -428,13 +435,6 @@ th.hours {
     display: block !important;
   }
 
-/*background color for wineries list*/ 
-  .background-color{
-  	background-color: #ECF1EF;
-	padding: 2px 5px 0px 5px;
-	margin: 5px 0 0 0
-  }
-  
   .locations-list-item {
     color: #428bca;
   }
